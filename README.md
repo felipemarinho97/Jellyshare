@@ -7,6 +7,7 @@ A Jellyfin plugin for sharing libraries between servers.
 This plugin is in a very early alpha state. Do not expect stability.
 
 - Is only able to handle Movie libraries.
+- Is only able to handle Direct Play media.
 - Is not able to handle URL or server name changes.
 - Is not able to handle library name changes.
 
