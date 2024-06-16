@@ -51,7 +51,7 @@ public class VideoSync
             var remoteVideos = await GetRemoteVideos(library, cancellationToken);
             foreach (var remoteVideo in remoteVideos)
             {
-                if (!localVideos.Contains(remoteVideo.Id))
+                if (!localVideos.Contains(remoteVideo.Id) && remoteVideo.Container.Contains("mp4"))
                 {
                     CreateVideo(remoteVideo, library);
                     localVideos.Add(remoteVideo.Id);
@@ -63,7 +63,6 @@ public class VideoSync
 
     private void CreateVideo(BaseItemDto remoteVideo, Folder libraryEntity)
     {
-        var path = Path.Combine(libraryEntity.Path, remoteVideo.Id.ToString() + ".mp4");
         File.Create(path);
 
         var itemId = _libraryManager.GetNewItemId(path, typeof(Movie));
